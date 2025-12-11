@@ -1,10 +1,13 @@
 import random
+import chords
+import input_utils
 
-chords = {
-    "C Major" : ["C","E","G"],
-    "F Major" : ["F","A","C"],
-    "Bb Major": ["Bb","D","F"]
-}
+from input_utils import input_normalisation
+from chords import chords_list
+chords = chords_list
+
+def clean_input(user_input):
+    return user_input
 
 # Print title
 print("Welcome to the Chord Quiz")
@@ -18,8 +21,9 @@ while question_number <= 5:
     chord, chord_tones = random.choice(list(chords.items()))
 
     # Get the answer as string and split the letters
-    answer = input(f"What are the chords in {chord}:\n").title().split()
+    answer = input(f"What are the tones in {chord}:\n")
 
+    answer = input_normalisation(answer)
     # Check if the lists match
     if set(answer) == set(chords[chord]):
         score += 1
