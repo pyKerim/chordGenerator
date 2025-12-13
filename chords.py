@@ -1,4 +1,4 @@
-chords_list = {
+chords = {
     "C Major": ["C", "E", "G"],
     "F Major": ["F", "A", "C"],
     "Bb Major": ["Bb", "D", "F"],

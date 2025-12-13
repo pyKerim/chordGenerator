@@ -1,13 +1,10 @@
 import random
-import chords
+from chords import chords, enharmonics
 import input_utils
 
 from input_utils import input_normalisation
-from chords import chords_list
-chords = chords_list
 
-def clean_input(user_input):
-    return user_input
+
 
 # Print title
 print("Welcome to the Chord Quiz")
@@ -22,13 +19,16 @@ while question_number <= 5:
 
     # Get the answer as string and split the letters
     answer = input(f"What are the tones in {chord}:\n")
-
     answer = input_normalisation(answer)
+
+    print("User:", answer)
+    print("Expected:", chords[chord])
+
     # Check if the lists match
-    if set(answer) == set(chords[chord]):
+    if set(answer) == set(chords[chord]) and len(answer) == len(chords[chord]):
         score += 1
         print("Correct!")
     else:
-        print("Incorrect!")
+        print(f"Incorrect! The correct answer was: {', '.join(chords[chord])}")
     question_number += 1
 print(f"You scored {score}/5!")
