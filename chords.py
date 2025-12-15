@@ -2,7 +2,7 @@ chords = {
     "C Major": ["C", "E", "G"],
     "F Major": ["F", "A", "C"],
     "Bb Major": ["Bb", "D", "F"],
-    "Eb Major": ["Eb", "G", "B"],
+    "Eb Major": ["Eb", "G", "Bb"],
     "Ab Major": ["Ab", "C", "Eb"],
     "Db Major": ["Db", "F", "Ab"],
     "A  Minor": ["A", "C", "E"],

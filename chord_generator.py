@@ -5,8 +5,16 @@ from input_utils import input_normalisation
 
 # Print title
 print("Welcome to the Chord Quiz")
+try:
+    with open("scores.txt", "r") as f:
+        lines = f.readlines()
+        scores = [int(line.strip()) for line in lines]
+        high_score = max(scores)
+except FileNotFoundError:
+    high_score = 0
+print(f"High score: {high_score}")
 input("Press any key")
-print("\n" * 25)
+print("\n" * 100)
 
 # Loop the quiz till all lives are gone
 lives = 5
@@ -33,5 +41,5 @@ while lives > 0:
 
 print(f"You scored {score}")
 my_scores = open("scores.txt", "a")
-my_scores.write(str(score))
+my_scores.write(str(score) + "\n")
 my_scores.close()
