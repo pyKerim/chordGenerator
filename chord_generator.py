@@ -5,6 +5,7 @@ from input_utils import input_normalisation
 
 # Print title
 print("Welcome to the Chord Quiz")
+# Open file and read highscore / catch error and set highscore to 0
 try:
     with open("scores.txt", "r") as f:
         lines = f.readlines()
@@ -12,9 +13,9 @@ try:
         high_score = max(scores)
 except FileNotFoundError:
     high_score = 0
+
 print(f"High score: {high_score}")
-input("Press any key")
-print("\n" * 100)
+difficulty = input("Select a difficulty:\n1.Easy (Major Chords)\n2.Normal (Major + Minor)\n3.Hard (All chord types)\n")
 
 # Loop the quiz till all lives are gone
 lives = 5
@@ -30,11 +31,11 @@ while lives > 0:
     answer = input_normalisation(answer)
 
     # Check if the lists match
-    if set(answer) == set(chords[chord]) and len(answer) == len(chords[chord]):
+    if set(answer) == set(chords[chord]["notes"]) and len(answer) == len(chords[chord]["notes"]):
         score += 1
         print("Correct!")
     else:
-        print(f"Incorrect! The correct answer was: {', '.join(chords[chord])}")
+        print(f"Incorrect! The correct answer was: {', '.join(chords[chord]["notes"])}")
         lives -= 1
         print(f"You have {lives} lives left.")
     question_number += 1
